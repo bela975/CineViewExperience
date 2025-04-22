@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Perfil - CineViewExperience</title>
+  <link rel="stylesheet" href="css/profile.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="menu-wrapper">
+    <button class="menu-btn" onclick="toggleMenu()">
+      <img src="assets/icons/Burger.svg" alt="Menu" class="burger-icon">
+    </button>
+    <div class="dropdown hidden" id="userMenu">
+      <a href="index.html">Início</a>
+      <a href="movies.html">Filmes</a>
+      <button onclick="logout()">Sair</button>
+    </div>
+  </div>  
+
+  <div class="container">
+    <h1 class="auth-only">Meu Perfil</h1>
+    
+    <div id="userInfo" class="user-card auth-only"></div>
+
+    <div id="editProfileModal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close" onclick="closeEditModal()">&times;</span>
+        <h3 id="editModalTitle">Editar</h3>
+        <form id="editProfileForm">
+          <input type="text" id="editFieldValue" placeholder="" required />
+          <input type="hidden" id="editFieldType" />
+          <input type="hidden" id="editUserId" />
+          <button type="button" onclick="submitEdit()">Salvar</button>
+        </form>
+      </div>
+    </div>
+    
+    <div class="filters auth-only">
+      <div class="search-filters">
+        <input type="text" id="searchInput" placeholder="Buscar por filme, tipo ou cadeiras...">
+        <button id="applyFilter" class="filter-btn">➤</button>
+      </div>
+      <select id="typeFilter">
+        <option value="">Todos os tipos</option>
+        <option value="inteira">Inteira</option>
+        <option value="meia">Meia</option>
+      </select>
+    </div>
+
+    <div id="activeFilters" class="active-filters auth-only"></div>
+
+    <h2 class="auth-only" style="margin-top: 2rem;">Meus Pedidos</h2>
+    
+    <div id="userOrders" class="auth-only"></div>
+
+    <div class="pagination auth-only">
+      <button id="prevPage">⟨</button>
+      <div id="paginationNumbers" class="pagination-numbers"></div>
+      <button id="nextPage">⟩</button>
+      <select id="perPageSelect" class="per-page-select">
+        <option value="5">5 por página</option>
+        <option value="10" selected>10 por página</option>
+        <option value="20">20 por página</option>
+        <option value="50">50 por página</option>
+      </select>
+    </div>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/profile.js"></script>
+  <script>
+    loadUserProfile();
+  </script>
+</body>
+</html>
